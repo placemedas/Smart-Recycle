@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/placemedas/Smart-Recycle#readme",
   "dependencies": {
+    "axios": "^0.21.0",
     "express": "^4.17.1"
   }
 }
