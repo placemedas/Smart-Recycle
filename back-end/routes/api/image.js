@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/image', (req, res) => {
-    return res.status('400').json({error: "Not implemented."});
+router.post('/', (req, res) => {
+    return res.status('400').json({error: "Not implemented"});
 
     let config = {
         headers: {
@@ -33,3 +33,5 @@ router.post('/image', (req, res) => {
         console.log(res);
     })
 });
+
+module.exports = router;
