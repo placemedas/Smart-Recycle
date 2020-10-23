@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const axios = require('axios');
 
 router.post('/', (req, res) => {
-    return res.status('400').json({error: "Not implemented"});
-
     let config = {
         headers: {
             "accept": "application/json, text/javascript, */*; q=0.01",
@@ -27,10 +26,19 @@ router.post('/', (req, res) => {
 
     };
 
-    let url = "https://api.recollect.net/api/areas/RecycleBC/services/waste/pages?suggest=w&type=material&set=default&include_links=true&locale=en&accept_list=true&_=1603489840194";
+    // NEED TO REPLACE WITH STRING FROM GOOGLE VISION API! :)
+    let searchString = encodeURIComponent("wax paper");
 
-    axios.get(url, data, config).then(result => {
-        console.log(res);
+    let pagesUrl = `https://api.recollect.net/api/areas/RecycleBC/services/waste/pages?suggest=${searchString}&type=material&set=default&include_links=true&locale=en&accept_list=true&_=1603489840194`;
+
+    axios.get(pagesUrl, data, config).then(result => {
+        let id = result.data[0].id;
+        let resultUrl = `https://api.recollect.net/api/areas/RecycleBC/services/waste/pages/en/${id}.json?widget_config=%7B%22js_host%22%3A%22https%3A%2F%2Fapi.recollect.net%22%2C%22version%22%3A%220.11.1603482829%22%2C%22api_host%22%3A%22https%3A%2F%2Fapi.recollect.net%22%2C%22base%22%3A%22https%3A%2F%2Frecollect.net%22%2C%22area%22%3A%22MMBC%22%2C%22name%22%3A%22wizard%22%7D&_=1603490576162`;
+        return axios.get(resultUrl, data, config);
+    }).then(result => {
+        return res.status('200').json(result);
+    }).catch(error => {
+        return res.status('400').json(error);
     })
 });
 
