@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+.demo-image-preview {
+  position: relative;
+  text-align: center;
+}
+
+.demo-image-preview > img {
+  width: 768px;
+}
+
+@media(max-width:768px){
+  .demo-image-preview > img {
+    width: 100%;
+  }
+}
+
+/* fullscreen enable by props */
+.demo-image-preview-fullscreen > img {
+  width: 100vw;
+  height:100vh;
+}
