@@ -1,7 +1,9 @@
 import './App.css';
 import Camera from './components/Camera'
+import Card from './components/Card'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import logo from './logo.png';
 
 class App extends React.Component {
   state = {
@@ -28,7 +30,9 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <img className="App-logo" src={logo} alt="Smart Recycle" />;
         <Camera />
+        <Card />;
         {
           Object.keys(data).length !== 0
             ?
