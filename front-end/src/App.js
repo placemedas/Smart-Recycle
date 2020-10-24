@@ -21,12 +21,16 @@ class App extends React.Component {
     );
   }
 
+  setData = (arg) => {
+    this.setState(arg);
+  }
+
   render() {
     const {data} = this.state;
 
     return (
       <div className="App">
-        <Camera setData={this.setState} />
+        <Camera setData={this.setData} />
         {
           Object.keys(data).length !== 0
             ?

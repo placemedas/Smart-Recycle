@@ -18,32 +18,38 @@ ImagePreview.propTypes = {
   dataUri: PropTypes.string,
   isFullscreen: PropTypes.bool
 };
- 
-function MyCamera (props) {
-  const [dataUri, setDataUri] = useState('');
- 
-  function handleTakePhotoAnimationDone (dataUri) {
-    axios.post('http://localhost:3000/api/image/', {image: "hello"}).then(result => {
-      // this.props.setData({ data: result.data });
-    })
-    console.log(dataUri);
-    setDataUri(dataUri);
+
+class MyCamera extends React.Component {
+  state = {
+    dataUri: ""
   }
- 
-  const isFullscreen = false;
-  return (
-    <div>
-      {
-        (dataUri)
-          ? <ImagePreview dataUri={dataUri}
-            isFullscreen={isFullscreen}
-          />
-          : <Camera onTakePhotoAnimationDone = {handleTakePhotoAnimationDone}
-            isFullscreen={isFullscreen}
-          />
+
+  handleTakePhotoAnimationDone = (dataUri) => {
+    axios.post('http://localhost:3000/api/image/', { image: dataUri }).then(result => {
+      if (Object.keys(result.data).length !== 0) {
+        this.props.setData({ data: JSON.stringify(result.data) });
+        console.log(result.data);
       }
-    </div>
-  );
+    })
+    this.setState({dataUri: dataUri});
+  }
+
+  render() {
+    const isFullscreen = false;
+    return (
+      <div>
+        {
+          (this.state.dataUri)
+            ? <ImagePreview dataUri={this.state.dataUri}
+              isFullscreen={isFullscreen}
+            />
+            : <Camera onTakePhotoAnimationDone={this.handleTakePhotoAnimationDone}
+              isFullscreen={isFullscreen}
+            />
+        }
+      </div>
+    );
+  }
 }
- 
+
 export default MyCamera;

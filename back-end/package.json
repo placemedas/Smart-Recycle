@@ -22,13 +22,14 @@
     "homepage": "https://github.com/placemedas/Smart-Recycle#readme",
     "dependencies": {
         "@google-cloud/vision": "2.1.2",
-        "axios": "^0.21.0",
-        "crypto-json": "^2.0.2",
-        "express": "^4.17.1",
-        "nodemon": "^2.0.6",
-        "concurrently": "^5.3.0",
-        "ejs": "latest",
         "aws-sdk": "latest",
-        "body-parser": "latest"
+        "axios": "^0.21.0",
+        "body-parser": "latest",
+        "concurrently": "^5.3.0",
+        "crypto-json": "^2.0.2",
+        "ejs": "latest",
+        "express": "^4.17.1",
+        "multer": "^1.4.2",
+        "nodemon": "^2.0.6"
     }
 }
