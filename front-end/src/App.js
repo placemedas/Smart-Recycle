@@ -1,7 +1,7 @@
 import './App.css';
 import Camera from './components/Camera'
 import Card from './components/Card'
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 import logo from './logo.png';
 
