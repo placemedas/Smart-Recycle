@@ -1,8 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const axios = require('axios');
+// const imageApi = require('../../visionAPI.js');
 
 router.post('/', (req, res) => {
+    
+    
+    console.log(req.body);
+
+    // console.log(imageApi.detectimage(req.body.image));
 
     let config = {
         headers: {

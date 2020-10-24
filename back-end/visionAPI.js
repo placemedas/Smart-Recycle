@@ -1,6 +1,6 @@
 module.exports = {
     //Below code calls Cloud Vision API and uses both object detection and label detection to fetch image tags
-    detectimage: async function detectimage(fileName) {
+    detectimage: async function detectimage(imageBase64) {
         // Imports the Google Cloud client libraries
         const vision = require('@google-cloud/vision');
         const fs = require('fs');
@@ -23,7 +23,7 @@ module.exports = {
         let request;
         try {
             request = {
-                image: { content: fs.readFileSync(fileName) },
+                image: { content: imageBase64 },
             };
         } catch (error) {
             console.log(error);
@@ -53,7 +53,8 @@ module.exports = {
         let newVar;
         let labels = [];
         try {
-            newVar = await client.labelDetection(fileName);
+            request['features'] = [{type: "LABEL_DETECTION"}];
+            newVar = await client.annotateImage(request);
             labels = newVar[0].labelAnnotations;
             labels.forEach(label => {
                 arr_lab_det.push(label.description);
@@ -63,8 +64,8 @@ module.exports = {
             console.log(error);
         }
 
-        console.log(lab_lab_det);
+        // console.log(lab_lab_det);
         final_string = lab_obj_det + " " + lab_lab_det;
-        console.log(`Search String is:${final_string}`);
+        // console.log(`Search String is:${final_string}`);
     }
 }
