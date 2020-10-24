@@ -127,7 +127,7 @@ class SimpleCard extends React.Component {
 
   render() {
     const { classes, data } = this.props;
-    console.log(data);
+    // console.log(data);
     return (
       <Card>
         <CardContent>
