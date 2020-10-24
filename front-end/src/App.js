@@ -1,42 +1,46 @@
 import './App.css';
 import Camera from './components/Camera'
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-function App() {
-  const [data, setData] = useState({});
+class App extends React.Component {
+  state = {
+    data: {}
+  }
 
-  useEffect(()=> {
-    if (Object.keys(data).length === 0) {
+  componentDidMount() {
+    if (Object.keys(this.state.data).length === 0) {
       axios.post('http://localhost:3000/api/image').then(result => {
-      setData(result.data);
-    }).catch(err => {
-    });
-    } else {
-      console.log(data);
+        this.setState({ data: result.data });
+      })
     }
-  })
+  }
 
-  const renderData = item => {
+  renderData = item => {
     if (!item || !item.value || !item.value.en) return null;
-    return(
+    return (
       <span>{item.value.en}</span>
     );
   }
 
-  return (
-    <div className="App">
-      <Camera />
-      {
-      Object.keys(data).length !== 0 
-      ?
-      data.opts.variables.map(item => {
-        return renderData(item)})
-      : 
-      null
-      }
-    </div>
-  );
+  render() {
+    const {data} = this.state;
+
+    return (
+      <div className="App">
+        <Camera />
+        {
+          Object.keys(data).length !== 0
+            ?
+            data.opts.variables.map(item => {
+              return this.renderData(item)
+            })
+            :
+            null
+        }
+      </div>
+    );
+  }
 }
 
 export default App;
