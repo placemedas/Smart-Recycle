@@ -1,9 +1,11 @@
 import './App.css';
 import Camera from './components/Camera'
+
 import Card from './components/Card'
 import React from 'react';
 import axios from 'axios';
 import logo from './logo.png';
+
 
 class App extends React.Component {
   state = {
@@ -12,9 +14,7 @@ class App extends React.Component {
 
   componentDidMount() {
     if (Object.keys(this.state.data).length === 0) {
-      axios.post('http://localhost:3000/api/image').then(result => {
-        this.setState({ data: result.data });
-      })
+     
     }
   }
 
@@ -25,14 +25,20 @@ class App extends React.Component {
     );
   }
 
+  setData = (arg) => {
+    this.setState(arg);
+  }
+
   render() {
     const {data} = this.state;
 
     return (
       <div className="App">
+
         <img className="App-logo" src={logo} alt="Smart Recycle" />;
-        <Camera />
+        <Camera setData={this.setData} />
         <Card />;
+
         {
           Object.keys(data).length !== 0
             ?
