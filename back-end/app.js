@@ -24,6 +24,8 @@ app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
 })
 
+
 // const visionAPI = require('./visionAPI.js');
 // const fileName = './beer-bottles.jpg';
 // visionAPI.detectimage(fileName);
+

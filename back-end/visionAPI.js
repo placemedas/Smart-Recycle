@@ -68,8 +68,10 @@ module.exports = {
             console.log(error);
         }
 
+
         // console.log(lab_lab_det);
         return final_string = lab_obj_det + " " + lab_lab_det;
         // console.log(`Search String is:${final_string}`);
+
     }
 }
