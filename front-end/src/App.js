@@ -9,20 +9,13 @@ import logo from './logo.png';
 
 class App extends React.Component {
   state = {
-    data: {}
+    data: ""
   }
 
   componentDidMount() {
     if (Object.keys(this.state.data).length === 0) {
-     
-    }
-  }
 
-  renderData = item => {
-    if (!item || !item.value || !item.value.en) return null;
-    return (
-      <span>{item.value.en}</span>
-    );
+    }
   }
 
   setData = (arg) => {
@@ -30,23 +23,19 @@ class App extends React.Component {
   }
 
   render() {
-    const {data} = this.state;
+    const { data } = this.state;
 
     return (
       <div className="App">
 
-        <img className="App-logo" src={logo} alt="Smart Recycle" />;
+        <img className="App-logo" src={logo} alt="Smart Recycle" style={{maxWidth: 200, maxHeight: 200}} />;
         <Camera setData={this.setData} />
-        <Card />;
-
         {
-          Object.keys(data).length !== 0
-            ?
-            data.opts.variables.map(item => {
-              return this.renderData(item)
-            })
-            :
-            null
+        data
+          ?
+          <Card data={data} />
+          :
+          null
         }
       </div>
     );

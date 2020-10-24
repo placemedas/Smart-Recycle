@@ -27,8 +27,7 @@ class MyCamera extends React.Component {
   handleTakePhotoAnimationDone = (dataUri) => {
     axios.post('http://localhost:3000/api/image/', { image: dataUri }).then(result => {
       if (Object.keys(result.data).length !== 0) {
-        this.props.setData({ data: JSON.stringify(result.data) });
-        console.log(result.data);
+        this.props.setData({ data: result.data });
       }
     })
     this.setState({dataUri: dataUri});
