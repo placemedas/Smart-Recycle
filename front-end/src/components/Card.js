@@ -67,7 +67,15 @@ class SimpleCard extends React.Component {
           <>
             <Typography variant="h4" component="h2">
               {section.field}
-            </Typography>
+            </Typography >
+              {
+              section.title
+              ?
+              <Typography variant="h5" component="h2">
+                {section.title}
+              </Typography>
+              :
+              null}
             {section.rows ? section.rows.map((row, index2) => this.renderRow(row, section.value, index2)) : null}
           </>
         );
