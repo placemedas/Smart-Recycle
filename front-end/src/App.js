@@ -7,7 +7,7 @@ function App() {
   const [data, setData] = useState({});
 
   useEffect(()=> {
-    if (!data) {
+    if (Object.keys(data).length === 0) {
       axios.post('http://localhost:3000/api/image').then(result => {
       console.log(result);
       setData(result);
