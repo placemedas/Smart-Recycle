@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Camera from './components/Camera'
 import { useEffect, useState } from 'react';
