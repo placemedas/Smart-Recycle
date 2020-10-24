@@ -22,4 +22,5 @@ app.listen(port, () => {
 
 const visionAPI = require('./visionAPI.js');
 const fileName = './beer-bottles.jpg';
-visionAPI.detectimage(fileName);
+const result = visionAPI.detectimage(fileName);
+console.log(`Search String is:${result}`);

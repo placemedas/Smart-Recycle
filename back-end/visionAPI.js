@@ -65,6 +65,6 @@ module.exports = {
 
         console.log(lab_lab_det);
         final_string = lab_obj_det + " " + lab_lab_det;
-        console.log(`Search String is:${final_string}`);
+        return final_string;
     }
 }
