@@ -22,7 +22,7 @@ function MyCamera (props) {
   const [dataUri, setDataUri] = useState('');
  
   function handleTakePhotoAnimationDone (dataUri) {
-    console.log('takePhoto');
+    console.log(dataUri);
     setDataUri(dataUri);
   }
  
