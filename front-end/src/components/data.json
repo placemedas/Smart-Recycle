@@ -1,0 +1,180 @@
+{
+    "client_id": "83179956-15A0-11EB-BF12-80F9AEF78223",
+    "data": {},
+    "base_locale": "en",
+    "opts": {
+        "variables": [
+            {
+                "name": "title_386505",
+                "is_translatable": 1,
+                "title": "Not Accepted",
+                "type": "input",
+                "value": {
+                    "en": "Not Accepted"
+                }
+            },
+            {
+                "title": "Title",
+                "type": "input",
+                "value": {
+                    "en": "Wax paper"
+                },
+                "name": "title",
+                "is_translatable": "1"
+            },
+            {
+                "title": "Synonyms",
+                "type": "input",
+                "value": {
+                    "en": "kitchen paper, parchment paper, butcher paper"
+                },
+                "is_translatable": "1",
+                "name": "synonyms"
+            },
+            {
+                "type": "image",
+                "title": "Associated Image",
+                "name": "associated_image"
+            },
+            {
+                "title": "Description",
+                "type": "ckeditor",
+                "value": {
+                    "en": ""
+                },
+                "is_translatable": "1",
+                "name": "description"
+            },
+            {
+                "is_translatable": "1",
+                "name": "dropoff_instructions",
+                "title": "Dropoff Instructions",
+                "type": "ckeditor",
+                "value": {
+                    "en": ""
+                }
+            },
+            {
+                "name_prefix": "wizard_",
+                "page_type": "stream",
+                "type": "list",
+                "link_name": "item_stream",
+                "field_placeholder": "Type the name of a stream...",
+                "title": "Streams",
+                "name": "streams"
+            },
+            {
+                "type": "ckeditor",
+                "title": "Special Instructions",
+                "value": {
+                    "en": "<p>Recycle BC manages packaging and printed paper recycling. Please call the Recycling Council of BC Hotline at&nbsp;<a href=\"tel:(800)%20667-4321\" target=\"_blank\">1-800-667-4321</a>&nbsp;or check Recyclepedia at&nbsp;<a href=\"http://rcbc.ca/\" target=\"_blank\">rcbc.ca</a>&nbsp;to find information about recycling this item.</p>\n"
+                },
+                "name": "special_instructions",
+                "is_translatable": "1"
+            },
+            {
+                "value": {
+                    "en": ""
+                },
+                "type": "ckeditor",
+                "title": "Not Accepted",
+                "is_translatable": "1",
+                "name": "not_excepted"
+            }
+        ],
+        "template": "material_template",
+        "share": [
+            {
+                "name": "wizard",
+                "url": "https://recyclebc.ca/results/material/",
+                "title": "This Tool",
+                "email_subject": "Know where it goes!",
+                "social_share_message": " tells you which bin materials go in!",
+                "email_message": " answers all your questions about what material goes where."
+            }
+        ]
+    },
+    "id": 473447,
+    "page_type": "material",
+    "tags": [
+        "collection_item"
+    ],
+    "page_name": "wax_paper",
+    "js_errors": [],
+    "caption": "Wax paper",
+    "sets": [
+        {
+            "title": {
+                "en": "Default"
+            },
+            "id": 60,
+            "service_id": 256,
+            "user_visible": 1,
+            "name": "default",
+            "active": 1,
+            "sort_order": 0
+        }
+    ],
+    "editing": 0,
+    "locale": "en",
+    "step": 1,
+    "default_image": [
+        "material.default.wax_paper"
+    ],
+    "content": "[{\"index\":0,\"rows\":[{\"$alt\":\"$image.alt\",\"type\":\"image\",\"field\":\"Associated Image\",\"$images\":\"$image\"}]},{\"value\":\"$variable.title\",\"$title\":\"%%\",\"rows\":[{\"$html\":\"$variable.description\",\"type\":\"html\"},{\"value\":\"$variable.dropoff_instructions\",\"field\":\"Dropoff Instructions\",\"type\":\"html\",\"icon\":\"car\",\"$icon\":\"$svc-opt.wizard_dropoff_icon\",\"$html\":\"%%\"}],\"name\":\"description\",\"field\":\"Title\",\"index\":1},{\"value\":\"$variable.synonyms\",\"index\":2,\"field\":\"Synonyms\"},{\"value\":\"$variable.streams\",\"include\":\"#item_stream\",\"field\":\"Streams\",\"index\":3,\"sections\":[\"description\",\"set_out_time\",\"depot_list\"]},{\"rows\":[{\"value\":\"$variable.special_instructions\",\"schema-property\":\"description\",\"$html\":\"%%\",\"type\":\"html\",\"icon\":\"notification\",\"field\":\"Special Instructions\"}],\"name\":\"special_instructions\",\"index\":4,\"@title\":\"wizard.special-instructions\"},{\"$title\":\"$variable.title_386505\",\"value\":\"$variable.not_accepted\",\"class\":\"Split\",\"icon\":\"no\",\"index\":5}]",
+    "set_filter": "default",
+    "sections": [
+        {
+            "rows": [
+                {
+                    "type": "image",
+                    "field": "Associated Image",
+                    "href": null,
+                    "alt": "Image of Wax paper",
+                    "images": [
+                        "material.default.wax_paper"
+                    ]
+                }
+            ],
+            "index": 0,
+            "title": null
+        },
+        {
+            "title": "Garbage",
+            "field": "Title",
+            "value": "Garbage",
+            "name": "description",
+            "included_from": "wizard_garbage",
+            "rows": [
+                {
+                    "value": "<p>This item should not be included in your recycling. Please put this item in your garbage or reuse it if appropriate.&nbsp;</p>",
+                    "href": null,
+                    "type": "html",
+                    "field": "Description",
+                    "images": [],
+                    "html": "<p>This item should not be included in your recycling. Please put this item in your garbage or reuse it if appropriate.&nbsp;</p>",
+                    "schema-property": "action.description",
+                    "icon": ""
+                }
+            ]
+        },
+        {
+            "name": "special_instructions",
+            "rows": [
+                {
+                    "icon": "notification",
+                    "html": "<p>Recycle BC manages packaging and printed paper recycling. Please call the Recycling Council of BC Hotline at&nbsp;<a href=\"tel:(800)%20667-4321\" target=\"_blank\">1-800-667-4321</a>&nbsp;or check Recyclepedia at&nbsp;<a href=\"http://rcbc.ca/\" target=\"_blank\">rcbc.ca</a>&nbsp;to find information about recycling this item.</p>\n",
+                    "schema-property": "description",
+                    "images": [],
+                    "value": "<p>Recycle BC manages packaging and printed paper recycling. Please call the Recycling Council of BC Hotline at&nbsp;<a href=\"tel:(800)%20667-4321\" target=\"_blank\">1-800-667-4321</a>&nbsp;or check Recyclepedia at&nbsp;<a href=\"http://rcbc.ca/\" target=\"_blank\">rcbc.ca</a>&nbsp;to find information about recycling this item.</p>\n",
+                    "href": null,
+                    "type": "html",
+                    "field": "Special Instructions"
+                }
+            ],
+            "index": 4,
+            "title": "Special Instructions"
+        }
+    ],
+    "is_default": 0
+}
