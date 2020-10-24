@@ -6,7 +6,6 @@ const upload = multer() // for parsing multipart/form-data
 const imageApi = require('../../visionAPI.js');
 
 router.post('/', upload.array(), (req, res) => {
-    // console.log(req.body);
 
     imageApi.detectimage(req.body.image).then(imageString => {
         let config = {
@@ -40,7 +39,6 @@ router.post('/', upload.array(), (req, res) => {
         let pagesUrl = `https://api.recollect.net/api/areas/RecycleBC/services/waste/pages?suggest=${searchString}&type=material&set=default&include_links=true&locale=en&accept_list=true&_=1603489840194`;
 
         axios.get(pagesUrl, data, config).then(result => {
-            console.log(result);
             let id = result.data[0].id;
             let resultUrl = `https://api.recollect.net/api/areas/RecycleBC/services/waste/pages/en/${id}.json?widget_config=%7B%22js_host%22%3A%22https%3A%2F%2Fapi.recollect.net%22%2C%22version%22%3A%220.11.1603482829%22%2C%22api_host%22%3A%22https%3A%2F%2Fapi.recollect.net%22%2C%22base%22%3A%22https%3A%2F%2Frecollect.net%22%2C%22area%22%3A%22MMBC%22%2C%22name%22%3A%22wizard%22%7D&_=1603490576162`;
             return axios.get(resultUrl);
@@ -50,7 +48,6 @@ router.post('/', upload.array(), (req, res) => {
             res.status(200).json({page_name: "result_unsuccessful"});
         });
     }).catch(error => {
-        console.log(error);
         res.status(400).json(error);
     });
 });
