@@ -27,8 +27,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-
-        <img className="App-logo" src={logo} alt="Smart Recycle" style={{maxWidth: 200, maxHeight: 200}} />;
+        <img className="App-logo" src={logo} alt="Smart Recycle" style={{maxWidth: 200, maxHeight: 200}} />
         <Camera setData={this.setData} />
         {
         data

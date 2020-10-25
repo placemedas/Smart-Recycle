@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Camera from 'react-html5-camera-photo';
+import Camera, {FACING_MODES} from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
@@ -44,6 +44,7 @@ class MyCamera extends React.Component {
             />
             : <Camera onTakePhotoAnimationDone={this.handleTakePhotoAnimationDone}
               isFullscreen={isFullscreen}
+              idealFacingMode = {FACING_MODES.ENVIRONMENT}
             />
         }
       </div>
