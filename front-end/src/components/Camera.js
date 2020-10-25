@@ -29,6 +29,8 @@ class MyCamera extends React.Component {
       if (Object.keys(result.data).length !== 0) {
         this.props.setData({ data: result.data });
       }
+    }).catch(error => {
+      this.props.setData({data: {page_name: "server_not_responding"}});
     })
     this.setState({dataUri: dataUri});
   }
