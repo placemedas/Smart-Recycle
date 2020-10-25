@@ -8,7 +8,8 @@ const image = require('./routes/api/image');
 
 app.use(bodyParser.json({limit: '50mb'})) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true, limit: '50mb' })) // for parsing application/x-www-form-urlencoded
-app.use(function (req, res, next) {
+
+app.use(function (req, res, next) { // allow cors http request
     res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
