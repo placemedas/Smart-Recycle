@@ -127,10 +127,13 @@ class SimpleCard extends React.Component {
 
   render() {
     const { classes, data } = this.props;
-    // console.log(data);
+    console.log(data);
     return (
       <Card>
         <CardContent>
+        <Typography variant="subtitle2" component="h2">
+            {`We identified your picture as: ${data.searchString}. \n Best guess for recyclable materials:`}
+          </Typography>
           <Typography variant="h4" component="h2">
             {this.properTitle(data.page_name)}
           </Typography>
