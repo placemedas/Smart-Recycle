@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 3000 // comment out if on remote
+//const port = 8080; // comment out if on local
 const bodyParser = require('body-parser');
 
 const image = require('./routes/api/image');
@@ -15,17 +16,12 @@ app.use(function (req, res, next) {
 });
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Please Recycle!')
 })
 
 app.use('/api/image', image);
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`)
+    console.log(`Example app listening at http://:${port}`)
 })
-
-
-// const visionAPI = require('./visionAPI.js');
-// const fileName = './beer-bottles.jpg';
-// visionAPI.detectimage(fileName);
 
