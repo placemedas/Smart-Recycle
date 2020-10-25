@@ -3,6 +3,7 @@ import Camera, {FACING_MODES} from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import PropTypes from 'prop-types';
 import axios from 'axios';
+import { host } from '../config'
 
 const ImagePreview = ({ dataUri, isFullscreen }) => {
   let classNameFullscreen = isFullscreen ? 'demo-image-preview-fullscreen' : '';
@@ -25,7 +26,7 @@ class MyCamera extends React.Component {
   }
 
   handleTakePhotoAnimationDone = (dataUri) => {
-    axios.post('http://localhost:3000/api/image/', { image: dataUri }).then(result => {
+    axios.post(host+'/api/image/', { image: dataUri }).then(result => {
       if (Object.keys(result.data).length !== 0) {
         this.props.setData({ data: result.data });
       }
