@@ -1,40 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+import './Card.css';
 import Card from '@material-ui/core/Card';
+import Paper from '@material-ui/core/Paper';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-// const styles = theme => ({
-//   card: {
-//     minWidth: 275,
-//   },
-//   bullet: {
-//     display: 'inline-block',
-//     margin: '0 2px',
-//     transform: 'scale(0.8)',
-//   },
-//   title: {
-//     fontSize: 14,
-//   },
-//   pos: {
-//     marginBottom: 12,
-//   },
-//   typography: {
-//     h4: {
-//       fontSize: 33,
-//       fontFamily: "Montserrat",
-//       fontWeight: 300,
-//       color: "orange",
-//       letterSpacing: "0.0075em",
-//       verticalAlign: "middle",
-//       alignItems: "center",
-//       textAlign: "left"
-//     }
-//   }
-// });
 
 function toTitleCase(str) {
   return str.replace(
@@ -55,9 +27,7 @@ const STYLE = {
 };
 
 class SimpleCard extends React.Component {
-  state = {
 
-  };
 
   renderSection = (section, index) => {
     if (index === 0) return null;
@@ -68,14 +38,14 @@ class SimpleCard extends React.Component {
             <Typography variant="h4" component="h2">
               {section.field}
             </Typography >
-              {
+            {
               section.title
-              ?
-              <Typography variant="h5" component="h2">
-                {section.title}
-              </Typography>
-              :
-              null}
+                ?
+                <Typography variant="h5" component="h2">
+                  {section.title}
+                </Typography>
+                :
+                null}
             {section.rows ? section.rows.map((row, index2) => this.renderRow(row, section.value, index2)) : null}
           </>
         );
@@ -125,34 +95,55 @@ class SimpleCard extends React.Component {
     return toTitleCase(newTitle);
   }
 
+
   render() {
-    const { classes, data } = this.props;
-    console.log(data);
+    const data = this.props.data;
+
     return (
-      <Card>
-        <CardContent>
-        <Typography variant="subtitle2" component="h2">
-            {`We identified your picture as: ${data.searchString}. \n Best guess for recyclable materials:`}
-          </Typography>
-          <Typography variant="h4" component="h2">
-            {this.properTitle(data.page_name)}
-          </Typography>
-          {data.sections ? data.sections.map((s, i) => this.renderSection(s, i)) : null}
-          <Typography variant="h5" component="h2">
-            {'"Thank you for using Smart Recycling"'}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size="small">Learn More</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <Paper className="topPaper" elevation={3}>
+          <Card className="topCard" variant="outlined">
+            <CardContent>
+              <Typography variant="subtitle2" component="h2">
+                {`We identified your picture as`}
+              </Typography>
+              <Typography variant="subtitle2" component="h2">
+                {`${data.searchString}`}
+              </Typography>
+            </CardContent>
+          </Card>
+        </Paper>
+        <Paper className="bottomPaper" id="scrollPoint" elevation={3}>
+          <Card className="bottomCard" variant="outlined">
+            <CardContent>
+              <Typography variant="subtitle2" component="h2">
+                {`Best guess for recyclable materials`}
+              </Typography>
+              <Typography variant="h4" component="h2">
+                {this.properTitle(data.page_name)}
+              </Typography>
+              {data.sections ? data.sections.map((s, i) => this.renderSection(s, i)) : null}
+              <Typography variant="h5" component="h2">
+                {'"Thank you for using Smart Recycling"'}
+              </Typography>
+            </CardContent>
+            <br/>
+            <CardActions>
+              <Button size="small" color="primary"
+                  onClick={this.props.refreshImage} >
+                  Take New Image
+              </Button>
+              <Button size="small" color="primary"
+                onClick={() => {
+                  onclick= window.open('https://recyclebc.ca/');
+                }}
+                >Learn More</Button>
+            </CardActions>
+          </Card>
+        </Paper>
+      </div>
     );
   }
 }
 
-// SimpleCard.propTypes = {
-//   classes: PropTypes.object.isRequired,
-// };
-
 export default SimpleCard;
-// export default withStyles(styles)(SimpleCard);
