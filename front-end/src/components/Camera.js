@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Camera, {FACING_MODES} from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import PropTypes from 'prop-types';
@@ -22,7 +22,7 @@ ImagePreview.propTypes = {
 
 class MyCamera extends React.Component {
   state = {
-    dataUri: ""
+
   }
 
   handleTakePhotoAnimationDone = (dataUri) => {
@@ -33,7 +33,7 @@ class MyCamera extends React.Component {
     }).catch(error => {
       this.props.setData({data: {page_name: "server_not_responding"}});
     })
-    this.setState({dataUri: dataUri});
+    this.props.setData({dataUri: dataUri});
   }
 
   render() {
@@ -41,8 +41,8 @@ class MyCamera extends React.Component {
     return (
       <div>
         {
-          (this.state.dataUri)
-            ? <ImagePreview dataUri={this.state.dataUri}
+          (this.props.dataUri)
+            ? <ImagePreview dataUri={this.props.dataUri}
               isFullscreen={isFullscreen}
             />
             : <Camera onTakePhotoAnimationDone={this.handleTakePhotoAnimationDone}

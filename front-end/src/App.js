@@ -1,20 +1,24 @@
 import './App.css';
 import Camera from './components/Camera'
-
 import Card from './components/Card'
 import React from 'react';
-import axios from 'axios';
 import logo from './logo.png';
 
 
 class App extends React.Component {
   state = {
-    data: ""
+    data: "",
+    dataUri: ""
   }
+  constructor(props) {
+    super(props)
+    this.myCardRef = React.createRef();
+}
 
-  componentDidMount() {
-    if (Object.keys(this.state.data).length === 0) {
-
+  componentDidUpdate(prevState) {
+    if ((prevState.data !== this.state.data)
+      &&(this.state.data !== "")){
+        this.scrollToCard();
     }
   }
 
@@ -22,17 +26,22 @@ class App extends React.Component {
     this.setState(arg);
   }
 
+  refreshImage = () => {
+    this.setState({data:"", dataUri: ""})
+  }
+  scrollToCard = () => {
+    var scrollPoint = document.getElementById("scrollPoint");
+    scrollPoint.scrollIntoView({behavior: "smooth"});
+  }
   render() {
-    const { data } = this.state;
-
     return (
       <div className="App">
-        <img className="App-logo" src={logo} alt="Smart Recycle" style={{maxWidth: 200, maxHeight: 200}} />
-        <Camera setData={this.setData} />
+        <img className="App-logo" src={logo} alt="Smart Recycle"/>
+        <Camera ref={this.myCardRef} setData={this.setData} dataUri={this.state.dataUri}/>
         {
-        data
+        this.state.data
           ?
-          <Card data={data} />
+          <Card data={this.state.data} refreshImage={this.refreshImage}/>
           :
           null
         }
