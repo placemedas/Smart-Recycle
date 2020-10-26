@@ -59,9 +59,13 @@ Smart Recycle, we make your life easier, we make the nature merrier.
 Our fronted is built on react which accesses the back end which is based on node.js and All of these are achieved through a rest API
 
 We use express as our framework.  where you can post an image request and then wait for response from the cloud vision API. 
+
 The cloud vision API is accessed by the server and responds with the best prediction of the image. 
 Then this prediction is sent to recycle BC where we can gain information about the recycling instructions of the item 
+
 And then all of this information is sent back to react frontend and displayed to the user.
+
+All of this hosted on aws with a dedicated and secured URL.
 
 ## Challenges
 
